@@ -37,7 +37,7 @@ class UserProfile(AbstractUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    nick_name = models.CharField(max_length=255)
+    nick_name = models.CharField(max_length=255, null=True)
 
     objects = UserProfileManager()
 
@@ -55,4 +55,8 @@ class UserProfile(AbstractUser, PermissionsMixin):
     def __str__(self):
         """Return string representation of user"""
         return self.email
+    
+    class Meta:
+        """Meta class to define some defaults"""
+        verbose_name = "User_Profile"
     
